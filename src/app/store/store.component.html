@@ -21,8 +21,26 @@
                         {{product.price | currency:"JPY" }}
                     </span>
                 </h4>
-                <div class="card-text bg-white p-1">{{ product.description }}</div>
+                <div class="card-text bg-white p-1">
+                    {{ product.description }}
+                </div>
             </div>
+            <div class="form-inline float-left mr-1">
+                <select [value] = "productsPerPage" (change)="changePageSize($event.target.value)" class="form-control">
+                    <option value="3">3 per page</option>
+                    <option value="4">4 per page</option>
+                    <option value="6">6 per page</option>
+                    <option value="8">8 per page</option>
+                </select>
+            </div>
+
+            <div class="btn-group float-right">
+                <button class="btn btn-outline-primary" *counter="let page of pageCount" (click)="changePage(page)"
+                [class.active] = "page == selectedPage">
+                    {{ page }}
+                </button>
+            </div>
+
         </div>
     </div>
 </div>
