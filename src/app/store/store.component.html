@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col bg-dark text-white">
             <h1 class="navbar-brand">Diagon Alley</h1>
+            <cart-summary></cart-summary>
         </div>
     </div>
     <div class="row">
@@ -23,8 +24,12 @@
                 </h4>
                 <div class="card-text bg-white p-1">
                     {{ product.description }}
+                    <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(product)">
+                        Add To Cart
+                    </button>
                 </div>
             </div>
+            
             <div class="form-inline float-left mr-1">
                 <select [value] = "productsPerPage" (change)="changePageSize($event.target.value)" class="form-control">
                     <option value="3">3 per page</option>
